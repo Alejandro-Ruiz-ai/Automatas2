@@ -411,26 +411,25 @@ namespace Sintaxis_2
 
         }
         //Printf -> printf(cadena(,Identificador)?);
-        private void Printf(bool ejecuta)
+         private void Printf(bool ejecuta)
         {
             match("printf");
             match("(");
+            string msg = getContenido();
+            if (msg.Length >= 2 && msg[0] == '"' && msg[msg.Length - 1] == '"') //Aqui se asegura que empiece con " y termina con "
+            {
+                msg = msg.Substring(1, msg.Length - 2);//Aqui se elimina al principio y al final las elimina
+            }
+            if (msg.Length >= 2 && msg.Contains("\\n")) //Hace que funcione el \n
+            {
+                msg = msg.Replace("\\n", "\n");
+            }
+            if (msg.Length >= 1 && msg.Contains("\\t")) //Hace que funcione el \t
+            {
+                msg = msg.Replace("\\t", "\t");
+            }
             if (ejecuta)
             {
-                string msg = getContenido();
-                if (msg.Length >= 2 && msg[0] == '"' && msg[msg.Length - 1] == '"') //Aqui se asegura que empiece con " y termina con "
-                {
-                    msg = msg.Substring(1, msg.Length - 2);//Aqui se elimina al principio y al final las elimina
-                }
-                if (msg.Length >= 2 && msg.Contains("\\n")) //Hace que funcione el \n
-                {
-                    msg = msg.Replace("\\n", "\n");
-                }
-                if (msg.Length >= 1 && msg.Contains("\\t")) //Hace que funcione el \t
-                {
-                    msg = msg.Replace("\\t", "\t");
-                }
-
                 Console.Write(msg);
             }
             match(Tipos.Cadena);
@@ -443,19 +442,14 @@ namespace Sintaxis_2
                 }
 
                 string variable = getContenido();
+                Console.Write(getValor(variable));
                 match(Tipos.Identificador);
-                string imprime = "" + getValor(variable);
-                if (ejecuta)
-                {
-                    Console.Write(imprime);
-                }
-
             }
             match(")");
             match(";");
         }
         //Scanf -> scanf(cadena,&Identificador);
-        private void Scanf(bool ejecuta)
+           private void Scanf(bool ejecuta)
         {
             match("scanf");
             match("(");
@@ -466,23 +460,19 @@ namespace Sintaxis_2
             {
                 throw new Error("de sintaxis, la variable <" + getContenido() + "> no está declarada", log, linea, columna);
             }
-
+            
             string variable = getContenido();
             match(Tipos.Identificador);
+            float num;
+            string captura = "" + Console.ReadLine();
+            if (!float.TryParse(captura, out num))
+            {
+                throw new Error("de sintaxis, la variable <" + getContenido() + "> no es un número", log, linea, columna);
+            }   
             if (ejecuta)
             {
-                float num;
-                string captura = "" + Console.ReadLine();
-                if (float.TryParse(captura, out num))
-                {
-                    float resultado = float.Parse(captura);
-                    Modifica(variable, resultado);
-                }
-                else
-                {
-                    throw new Error("de sintaxis, la variable <" + getContenido() + "> no es un número", log, linea, columna);
-                }
-
+                float resultado = float.Parse(captura);
+                Modifica(variable, resultado);
             }
             match(")");
             match(";");
