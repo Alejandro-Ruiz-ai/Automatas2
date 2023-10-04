@@ -330,13 +330,14 @@ namespace Sintaxis_2
         //While -> while(Condicion) BloqueInstrucciones | Instruccion
         private void While(bool ejecuta)
         {
-            match("while");
-            match("(");
             int inicia = caracter;
             int lineaInicio = linea;
-            string variable = getContenido();
             do
             {
+                match("while");
+
+                match("(");
+
                 ejecuta = Condicion() && ejecuta;
                 match(")");
                 if (getContenido() == "{")
@@ -350,11 +351,10 @@ namespace Sintaxis_2
                 if (ejecuta)
                 {
                     archivo.DiscardBufferedData();
-                    caracter = inicia - variable.Length - 1;
+                    caracter = inicia - 5;
                     archivo.BaseStream.Seek(caracter, SeekOrigin.Begin);
                     nextToken();
                     linea = lineaInicio;
-
                 }
 
             } while (ejecuta);
@@ -362,14 +362,15 @@ namespace Sintaxis_2
         //Do -> do BloqueInstrucciones | Instruccion while(Condicion)
         private void Do(bool ejecuta)
         {
-            match("do");
             int inicia = caracter;
             int lineaInicio = linea;
-           
             do
             {
+                match("do");
+
                 if (getContenido() == "{")
                 {
+
                     BloqueInstrucciones(ejecuta);
                 }
                 else
@@ -377,23 +378,19 @@ namespace Sintaxis_2
                     Instruccion(ejecuta);
                 }
 
-
                 match("while");
                 match("(");
-
-                string variable = getContenido();
                 ejecuta = Condicion() && ejecuta;
+                match(")");
+                match(";");
                 if (ejecuta)
                 {
                     archivo.DiscardBufferedData();
-                    caracter = inicia - variable.Length - 1;
+                    caracter = inicia - 2;
                     archivo.BaseStream.Seek(caracter, SeekOrigin.Begin);
                     nextToken();
                     linea = lineaInicio;
-
                 }
-                match(")");
-                match(";");
             } while (ejecuta);
         }
         //For -> for(Asignacion Condicion; Incremento) BloqueInstrucciones | Instruccion
@@ -701,7 +698,7 @@ namespace Sintaxis_2
                     resultado = MathF.Round(resultado);
                     x = resultado % 256;
                     return x;
-            
+
                 case Variable.TiposDatos.Int:
                     resultado = MathF.Round(resultado);
                     x = resultado % 65526;
