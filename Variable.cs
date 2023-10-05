@@ -12,19 +12,16 @@ namespace Sintaxis_2
         private string nombre;
         private float valor;
         private TiposDatos tipo;
-
         public Variable(string nombre, TiposDatos tipo)
         {
             this.nombre = nombre;
             this.tipo = tipo;
             this.valor = 0;
         }
-
         public string getNombre()
         {
             return nombre;
         }
-
         public TiposDatos getTiposDatos()
         {
             return this.tipo;

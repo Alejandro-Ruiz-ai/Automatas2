@@ -321,7 +321,7 @@ namespace Sintaxis_2
                 }
                 else
                 {
-                    throw new Error("de semantica, no se puede asignar in <" + tipoDatoResultado + "> a un <" + tipoDatoVariable + ">", log, linea, columna);
+                    throw new Error("de semantica, no se puede asignar un <" + tipoDatoMayor + "> a un <" + tipoDatoVariable + ">", log, linea, columna);
                 }
             }
             match(";");
@@ -442,7 +442,7 @@ namespace Sintaxis_2
                     }
                     else
                     {
-                        throw new Error("de semantica, no se puede asignar in <" + tipoDatoResultado + "> a un <" + tipoDatoVariable + ">", log, linea, columna);
+                        throw new Error("de semantica, no se puede asignar un <" + tipoDatoMayor + "> a un <" + tipoDatoVariable + ">", log, linea, columna);
                     }
 
                     archivo.DiscardBufferedData();
@@ -574,7 +574,27 @@ namespace Sintaxis_2
             {
                 string captura = "" + Console.ReadLine();
                 float resultado = float.Parse(captura);
-                Modifica(variable, resultado);
+
+                Variable.TiposDatos tipoDatoVariable = getTipo(variable);
+                Variable.TiposDatos tipoDatoResultado = getTipo(resultado);
+                Variable.TiposDatos tipoDatoMayor;
+                if (tipoDatoExpresion >= tipoDatoResultado)
+                {
+                    tipoDatoMayor = tipoDatoExpresion;
+                }
+                else
+                {
+                    tipoDatoMayor = tipoDatoResultado;
+                }
+                if (tipoDatoVariable >= tipoDatoMayor)
+                {
+                    Modifica(variable, resultado);
+                }
+                else
+                {
+                    throw new Error("de semantica, no se puede asignar un <" + tipoDatoMayor + "> a un <" + tipoDatoVariable + ">", log, linea, columna);
+                }
+
             }
             match(")");
             match(";");
