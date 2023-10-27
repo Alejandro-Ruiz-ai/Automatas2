@@ -933,10 +933,7 @@ namespace Sintaxis_2
                 {
                     tipoDatoExpresion = tipoDatoCast;
                     stack.Push(castea(stack.Pop(), tipoDatoCast, primeraVez));
-                    if (primeraVez)
-                    {
-                        asm.WriteLine("PUSH AX");
-                    }
+
                 }
             }
         }
@@ -950,15 +947,16 @@ namespace Sintaxis_2
                         asm.WriteLine("POP AX");
                         asm.WriteLine("MOV BX, 256");
                         asm.WriteLine("DIV BX");
-
+                        asm.WriteLine("XOR AX, AX");
+                        asm.WriteLine("MOV AX, DX");
+                        asm.WriteLine("PUSH AX");
                     }
                     return MathF.Round(resultado) % 256;
                 case Variable.TiposDatos.Int:
                     if (primeraVez)
                     {
                         asm.WriteLine("POP AX");
-                        asm.WriteLine("MOV BX, 65536");
-                        asm.WriteLine("DIV BX");
+                        asm.WriteLine("PUSH AX");
                     }
                     return MathF.Round(resultado) % 65536;
             }

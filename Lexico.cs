@@ -61,7 +61,8 @@ namespace Sintaxis_2
         };
         protected StreamReader archivo;
         protected StreamWriter log;
-
+ 
+        protected StreamWriter asm;
         protected int linea;
         protected int columna;
 
@@ -70,9 +71,14 @@ namespace Sintaxis_2
         {
             linea = columna = caracter = 1;
             log = new StreamWriter("prueba.log");
+            asm = new StreamWriter("prueba.asm");
+            log.AutoFlush = true;
+            asm.AutoFlush = true;
             log.WriteLine("Autor: Alejandro Ruiz Bedolla");
             log.WriteLine(thisDay.ToString("F"));
-            log.AutoFlush = true;
+            asm.WriteLine("Autor: Alejandro Ruiz Bedolla");
+            asm.WriteLine(thisDay.ToString("F"));
+           
             if (File.Exists("prueba.cpp"))
             {
                 archivo = new StreamReader("prueba.cpp");
@@ -86,9 +92,14 @@ namespace Sintaxis_2
         {
             linea = columna = caracter = 1;
             log = new StreamWriter(Path.GetFileNameWithoutExtension(nombre) + ".log");
+            asm = new StreamWriter(Path.GetFileNameWithoutExtension(nombre) + ".asm");
+            log.AutoFlush = true;
+            asm.AutoFlush = true;
             log.WriteLine("Autor: Alejandro Ruiz Bedolla");
             log.WriteLine(thisDay.ToString("F"));
-            log.AutoFlush = true;
+            asm.WriteLine("Autor: Alejandro Ruiz Bedolla");
+            asm.WriteLine(thisDay.ToString("F"));
+           
             if (Path.GetExtension(nombre) != ".cpp")
             {
                 throw new Error("El archivo " + nombre + " no tiene extension CPP", log, linea, columna);

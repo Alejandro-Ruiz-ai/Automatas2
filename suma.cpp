@@ -4,9 +4,18 @@
 
 char altura,i,j,k;
 int a;
+int z;
 
 void main() // Funcion principal
 {
+
+ z= 986;
+ z=(int)(986);
+ printf("z es igual a: ",z);
+ i=(char)(z);
+ printf(" i es igual a: ",i);
+
+
   /*
     a = 8;
     a%=3;
@@ -50,13 +59,13 @@ void main() // Funcion principal
     */
     //*8 - (10-4)/2;
 
-    
+  
+   
     
     printf("\nAltura: ");
     scanf("&i",&altura);
 
  
- /*
     printf("\nfor:\n");
    
     for (i = 1; i <= altura; i++)
@@ -89,7 +98,6 @@ void main() // Funcion principal
         printf("\n");
     }
 
-*/
     
     printf("\ndo:\n");
     i = 1;
@@ -107,5 +115,7 @@ void main() // Funcion principal
         i++;
         printf("\n");
     } while (i <= altura);
+    
+
     
 }
