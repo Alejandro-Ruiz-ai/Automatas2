@@ -8,7 +8,7 @@ int z;
 
 void main() // Funcion principal
 {
-
+/*
  z= 986;
  z=(int)(986);
  printf("z es igual a: ",z);
@@ -16,7 +16,7 @@ void main() // Funcion principal
  printf(" i es igual a: ",i);
 
 
-  /*
+  
     a = 8;
     a%=3;
     

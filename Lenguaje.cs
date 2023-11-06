@@ -648,7 +648,7 @@ namespace Sintaxis_2
                 match("else");
                 if (primeraVez)
                 {
-                    asm.WriteLine("; else: " + contIf);
+                    asm.WriteLine("; else: " + contElse);
                 }
                 if (getContenido() == "{")
                 {
@@ -679,7 +679,7 @@ namespace Sintaxis_2
                 cadena = cadena.Replace(@"\n", "\n");
                 cadena = cadena.Replace(@"\t", "\t");
                 cadenaasm = cadenaasm.Replace(@"\n", "'\nprintn '' \nprint '");
-                cadenaasm = cadenaasm.Replace(@"\t", "' \nprint '");
+                cadenaasm = cadenaasm.Replace(@"\t", "' \nprint ' ");
                 Console.Write(cadena);
                 if (primeraVez)
                 {
@@ -695,7 +695,7 @@ namespace Sintaxis_2
                 cadenaasm = cadena;
 
                 cadenaasm = cadenaasm.Replace(@"\n", "'\nprintn '' \nprint '");
-                cadenaasm = cadenaasm.Replace(@"\t", "' \nprint '");
+                cadenaasm = cadenaasm.Replace(@"\t", "' \nprint ' ");
                 if (primeraVez)
                 {
 
@@ -852,6 +852,7 @@ namespace Sintaxis_2
                     {
                         asm.WriteLine("MUL  BX");
                         asm.WriteLine("PUSH AX");
+                        asm.WriteLine("XOR AX, AX");
                     }
                 }
                 else if (operador == "/")
@@ -861,6 +862,7 @@ namespace Sintaxis_2
                     {
                         asm.WriteLine("DIV  BX");
                         asm.WriteLine("PUSH AX");
+                        asm.WriteLine("XOR AX, AX");
                     }
                 }
                 else
@@ -870,6 +872,7 @@ namespace Sintaxis_2
                     {
                         asm.WriteLine("DIV  BX");
                         asm.WriteLine("PUSH DX");
+                        asm.WriteLine("XOR DX, DX");
                     }
                 }
             }
@@ -957,6 +960,7 @@ namespace Sintaxis_2
                     {
                         asm.WriteLine("POP AX");
                         asm.WriteLine("PUSH AX");
+                        asm.WriteLine("XOR AX, AX");
                     }
                     return MathF.Round(resultado) % 65536;
             }

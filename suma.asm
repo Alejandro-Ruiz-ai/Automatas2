@@ -1,36 +1,7 @@
 Autor: Alejandro Ruiz Bedolla
-viernes, 27 de octubre de 2023 12:41:39 p. m.
+miércoles, 1 de noviembre de 2023 01:21:29 p. m.
 include 'emu8086.inc'
 org 100h
-MOV AX, 986
-PUSH AX
-POP AX
-; Asignacion z
-MOV z, AX
-MOV AX, 986
-PUSH AX
-POP AX
-PUSH AX
-POP AX
-; Asignacion z
-MOV z, AX
-print 'z es igual a: '
-MOV AX, z
-CALL print_num
-MOV AX, z
-PUSH AX
-POP AX
-MOV BX, 256
-DIV BX
-XOR AX, AX
-MOV AX, DX
-PUSH AX
-POP AX
-; Asignacion i
-MOV i, AX
-print ' i es igual a: '
-MOV AX, i
-CALL print_num
 print ''
 printn '' 
 print 'Altura: '
@@ -86,6 +57,7 @@ POP BX
 POP AX
 DIV  BX
 PUSH DX
+XOR DX, DX
 MOV AX, 0
 PUSH AX
 POP BX
@@ -111,7 +83,6 @@ FinFor1:
 ; For: 4
 ; For: 5
 ; For: 6
-; For: 7
 print ''
 printn '' 
 print 'while:'
@@ -151,7 +122,7 @@ POP BX
 POP AX
 CMP AX, BX
 JAE FinWhile2
-; if: 22
+; if: 16
 MOV AX, j
 PUSH AX
 MOV AX, 2
@@ -160,18 +131,19 @@ POP BX
 POP AX
 DIV  BX
 PUSH DX
+XOR DX, DX
 MOV AX, 0
 PUSH AX
 POP BX
 POP AX
 CMP AX, BX
-JNE Eif22
+JNE Eif16
 print '-'
-JMP Eelse22
-Eif22:
-; else: 23
+JMP Eelse16
+Eif16:
+; else: 17
 print '+'
-Eelse22:
+Eelse16:
 INC j
 JMP InicioWhile2
 FinWhile2:
@@ -198,7 +170,7 @@ POP AX
 ; Asignacion j
 MOV j, AX
 InicioDoWhile2:
-; if: 43
+; if: 31
 MOV AX, j
 PUSH AX
 MOV AX, 2
@@ -207,18 +179,19 @@ POP BX
 POP AX
 DIV  BX
 PUSH DX
+XOR DX, DX
 MOV AX, 0
 PUSH AX
 POP BX
 POP AX
 CMP AX, BX
-JNE Eif43
+JNE Eif31
 print '-'
-JMP Eelse43
-Eif43:
-; else: 44
+JMP Eelse31
+Eif31:
+; else: 32
 print '+'
-Eelse43:
+Eelse31:
 INC j
 MOV AX, j
 PUSH AX
