@@ -45,7 +45,7 @@ void main() // Funcion principal
     // k = (int)(10);
     // k = 1.5;
     // k = (int)((char)(1.5));
-    /**
+    /*
     k = (3+5)*8-(10-4)/2; // 61
 
     if (1==1)
@@ -59,8 +59,18 @@ void main() // Funcion principal
     */
     //*8 - (10-4)/2;
 
-  
-   
+     
+
+a = 258;
+printf("\na: ",a);
+a = (char)(a);
+printf("\na: ",a);
+a += 8;
+printf("\na: ",a);
+a *= 10;
+printf("\na: ",a);
+a /= 100;
+      printf("\nValor Casteado de a: ", a);
     
     printf("\nAltura: ");
     scanf("&i",&altura);

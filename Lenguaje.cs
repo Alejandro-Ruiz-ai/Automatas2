@@ -810,6 +810,7 @@ namespace Sintaxis_2
                     {
                         asm.WriteLine("ADD AX, BX");
                         asm.WriteLine("PUSH AX");
+                        asm.WriteLine("XOR AX, AX");
                     }
                 }
                 else
@@ -819,6 +820,7 @@ namespace Sintaxis_2
                     {
                         asm.WriteLine("SUB AX, BX");
                         asm.WriteLine("PUSH AX");
+                        asm.WriteLine("XOR AX, AX");
                     }
                 }
             }
@@ -887,6 +889,7 @@ namespace Sintaxis_2
                 {
                     asm.WriteLine("MOV AX, " + getContenido());
                     asm.WriteLine("PUSH AX");
+                    asm.WriteLine("XOR AX, AX");
                 }
                 stack.Push(float.Parse(getContenido()));
                 if (tipoDatoExpresion < getTipo(float.Parse(getContenido())))
@@ -905,6 +908,7 @@ namespace Sintaxis_2
                 {
                     asm.WriteLine("MOV AX, " + getContenido());
                     asm.WriteLine("PUSH AX");
+                    asm.WriteLine("XOR AX, AX");
                 }
                 stack.Push(getValor(getContenido()));
                 match(Tipos.Identificador);
@@ -952,6 +956,7 @@ namespace Sintaxis_2
                         asm.WriteLine("DIV BX");
                         asm.WriteLine("XOR AX, AX");
                         asm.WriteLine("MOV AX, DX");
+                        asm.WriteLine("XOR DX, DX");
                         asm.WriteLine("PUSH AX");
                     }
                     return MathF.Round(resultado) % 256;

@@ -1,7 +1,72 @@
 Autor: Alejandro Ruiz Bedolla
-miércoles, 1 de noviembre de 2023 01:21:29 p. m.
+martes, 7 de noviembre de 2023 06:18:09 p. m.
 include 'emu8086.inc'
 org 100h
+MOV AX, 258
+PUSH AX
+XOR AX, AX
+POP AX
+; Asignacion a
+MOV a, AX
+print ''
+printn '' 
+print 'a: '
+MOV AX, a
+CALL print_num
+MOV AX, a
+PUSH AX
+XOR AX, AX
+POP AX
+MOV BX, 256
+DIV BX
+XOR AX, AX
+MOV AX, DX
+XOR DX, DX
+PUSH AX
+POP AX
+; Asignacion a
+MOV a, AX
+print ''
+printn '' 
+print 'a: '
+MOV AX, a
+CALL print_num
+MOV AX, 8
+PUSH AX
+XOR AX, AX
+POP AX
+MOV BX, a
+ADD AX, BX
+MOV a, AX
+print ''
+printn '' 
+print 'a: '
+MOV AX, a
+CALL print_num
+MOV AX, 10
+PUSH AX
+XOR AX, AX
+MOV BX, a
+POP AX
+MUL BX
+MOV a, AX
+print ''
+printn '' 
+print 'a: '
+MOV AX, a
+CALL print_num
+MOV AX, 100
+PUSH AX
+XOR AX, AX
+MOV AX, a
+POP BX
+DIV BX
+MOV a, AX
+print ''
+printn '' 
+print 'Valor Casteado de a: '
+MOV AX, a
+CALL print_num
 print ''
 printn '' 
 print 'Altura: '
@@ -15,14 +80,17 @@ print ''
 ; For: 1
 MOV AX, 1
 PUSH AX
+XOR AX, AX
 POP AX
 ; Asignacion i
 MOV i, AX
 InicioFor1:
 MOV AX, i
 PUSH AX
+XOR AX, AX
 MOV AX, altura
 PUSH AX
+XOR AX, AX
 POP BX
 POP AX
 CMP AX, BX
@@ -30,20 +98,25 @@ JA FinFor1
 ; For: 2
 MOV AX, 250
 PUSH AX
+XOR AX, AX
 POP AX
 ; Asignacion j
 MOV j, AX
 InicioFor2:
 MOV AX, j
 PUSH AX
+XOR AX, AX
 MOV AX, 250
 PUSH AX
+XOR AX, AX
 MOV AX, i
 PUSH AX
+XOR AX, AX
 POP BX
 POP AX
 ADD AX, BX
 PUSH AX
+XOR AX, AX
 POP BX
 POP AX
 CMP AX, BX
@@ -51,8 +124,10 @@ JAE FinFor2
 ; if: 1
 MOV AX, j
 PUSH AX
+XOR AX, AX
 MOV AX, 2
 PUSH AX
+XOR AX, AX
 POP BX
 POP AX
 DIV  BX
@@ -60,6 +135,7 @@ PUSH DX
 XOR DX, DX
 MOV AX, 0
 PUSH AX
+XOR AX, AX
 POP BX
 POP AX
 CMP AX, BX
@@ -80,9 +156,6 @@ INC i
 JMP InicioFor1
 FinFor1:
 ; For: 3
-; For: 4
-; For: 5
-; For: 6
 print ''
 printn '' 
 print 'while:'
@@ -90,43 +163,53 @@ printn ''
 print ''
 MOV AX, 1
 PUSH AX
+XOR AX, AX
 POP AX
 ; Asignacion i
 MOV i, AX
 InicioWhile1:
 MOV AX, i
 PUSH AX
+XOR AX, AX
 MOV AX, altura
 PUSH AX
+XOR AX, AX
 POP BX
 POP AX
 CMP AX, BX
 JA FinWhile1
 MOV AX, 250
 PUSH AX
+XOR AX, AX
 POP AX
 ; Asignacion j
 MOV j, AX
 InicioWhile2:
 MOV AX, j
 PUSH AX
+XOR AX, AX
 MOV AX, 250
 PUSH AX
+XOR AX, AX
 MOV AX, i
 PUSH AX
+XOR AX, AX
 POP BX
 POP AX
 ADD AX, BX
 PUSH AX
+XOR AX, AX
 POP BX
 POP AX
 CMP AX, BX
 JAE FinWhile2
-; if: 16
+; if: 4
 MOV AX, j
 PUSH AX
+XOR AX, AX
 MOV AX, 2
 PUSH AX
+XOR AX, AX
 POP BX
 POP AX
 DIV  BX
@@ -134,16 +217,17 @@ PUSH DX
 XOR DX, DX
 MOV AX, 0
 PUSH AX
+XOR AX, AX
 POP BX
 POP AX
 CMP AX, BX
-JNE Eif16
+JNE Eif4
 print '-'
-JMP Eelse16
-Eif16:
-; else: 17
+JMP Eelse4
+Eif4:
+; else: 5
 print '+'
-Eelse16:
+Eelse4:
 INC j
 JMP InicioWhile2
 FinWhile2:
@@ -160,21 +244,25 @@ printn ''
 print ''
 MOV AX, 1
 PUSH AX
+XOR AX, AX
 POP AX
 ; Asignacion i
 MOV i, AX
 InicioDoWhile1:
 MOV AX, 250
 PUSH AX
+XOR AX, AX
 POP AX
 ; Asignacion j
 MOV j, AX
 InicioDoWhile2:
-; if: 31
+; if: 7
 MOV AX, j
 PUSH AX
+XOR AX, AX
 MOV AX, 2
 PUSH AX
+XOR AX, AX
 POP BX
 POP AX
 DIV  BX
@@ -182,27 +270,32 @@ PUSH DX
 XOR DX, DX
 MOV AX, 0
 PUSH AX
+XOR AX, AX
 POP BX
 POP AX
 CMP AX, BX
-JNE Eif31
+JNE Eif7
 print '-'
-JMP Eelse31
-Eif31:
-; else: 32
+JMP Eelse7
+Eif7:
+; else: 8
 print '+'
-Eelse31:
+Eelse7:
 INC j
 MOV AX, j
 PUSH AX
+XOR AX, AX
 MOV AX, 250
 PUSH AX
+XOR AX, AX
 MOV AX, i
 PUSH AX
+XOR AX, AX
 POP BX
 POP AX
 ADD AX, BX
 PUSH AX
+XOR AX, AX
 POP BX
 POP AX
 CMP AX, BX
@@ -215,8 +308,10 @@ printn ''
 print ''
 MOV AX, i
 PUSH AX
+XOR AX, AX
 MOV AX, altura
 PUSH AX
+XOR AX, AX
 POP BX
 POP AX
 CMP AX, BX
@@ -236,3 +331,4 @@ k dw 0h
 a dw 0h
 z dw 0h
 END
+
