@@ -1,5 +1,5 @@
 Autor: Alejandro Ruiz Bedolla
-martes, 7 de noviembre de 2023 06:18:09 p. m.
+miércoles, 8 de noviembre de 2023 01:36:35 p. m.
 include 'emu8086.inc'
 org 100h
 MOV AX, 258
@@ -8,11 +8,6 @@ XOR AX, AX
 POP AX
 ; Asignacion a
 MOV a, AX
-print ''
-printn '' 
-print 'a: '
-MOV AX, a
-CALL print_num
 MOV AX, a
 PUSH AX
 XOR AX, AX
@@ -26,11 +21,6 @@ PUSH AX
 POP AX
 ; Asignacion a
 MOV a, AX
-print ''
-printn '' 
-print 'a: '
-MOV AX, a
-CALL print_num
 MOV AX, 8
 PUSH AX
 XOR AX, AX
@@ -38,11 +28,6 @@ POP AX
 MOV BX, a
 ADD AX, BX
 MOV a, AX
-print ''
-printn '' 
-print 'a: '
-MOV AX, a
-CALL print_num
 MOV AX, 10
 PUSH AX
 XOR AX, AX
@@ -50,11 +35,6 @@ MOV BX, a
 POP AX
 MUL BX
 MOV a, AX
-print ''
-printn '' 
-print 'a: '
-MOV AX, a
-CALL print_num
 MOV AX, 100
 PUSH AX
 XOR AX, AX
@@ -62,14 +42,12 @@ MOV AX, a
 POP BX
 DIV BX
 MOV a, AX
-print ''
-printn '' 
 print 'Valor Casteado de a: '
 MOV AX, a
 CALL print_num
 print ''
 printn '' 
-print 'Altura: '
+print 'Digite el valor de altura: '
 call scan_num 
 MOV altura, CX
 print ''
@@ -95,6 +73,8 @@ POP BX
 POP AX
 CMP AX, BX
 JA FinFor1
+print ''
+print '     '
 ; For: 2
 MOV AX, 250
 PUSH AX
@@ -156,6 +136,8 @@ INC i
 JMP InicioFor1
 FinFor1:
 ; For: 3
+; For: 4
+; For: 5
 print ''
 printn '' 
 print 'while:'
@@ -178,6 +160,8 @@ POP BX
 POP AX
 CMP AX, BX
 JA FinWhile1
+print ''
+print '     '
 MOV AX, 250
 PUSH AX
 XOR AX, AX
@@ -203,7 +187,7 @@ POP BX
 POP AX
 CMP AX, BX
 JAE FinWhile2
-; if: 4
+; if: 11
 MOV AX, j
 PUSH AX
 XOR AX, AX
@@ -221,13 +205,13 @@ XOR AX, AX
 POP BX
 POP AX
 CMP AX, BX
-JNE Eif4
+JNE Eif11
 print '-'
-JMP Eelse4
-Eif4:
-; else: 5
+JMP Eelse11
+Eif11:
+; else: 12
 print '+'
-Eelse4:
+Eelse11:
 INC j
 JMP InicioWhile2
 FinWhile2:
@@ -249,6 +233,8 @@ POP AX
 ; Asignacion i
 MOV i, AX
 InicioDoWhile1:
+print ''
+print '     '
 MOV AX, 250
 PUSH AX
 XOR AX, AX
@@ -256,7 +242,7 @@ POP AX
 ; Asignacion j
 MOV j, AX
 InicioDoWhile2:
-; if: 7
+; if: 21
 MOV AX, j
 PUSH AX
 XOR AX, AX
@@ -274,13 +260,13 @@ XOR AX, AX
 POP BX
 POP AX
 CMP AX, BX
-JNE Eif7
+JNE Eif21
 print '-'
-JMP Eelse7
-Eif7:
-; else: 8
+JMP Eelse21
+Eif21:
+; else: 22
 print '+'
-Eelse7:
+Eelse21:
 INC j
 MOV AX, j
 PUSH AX
@@ -331,4 +317,3 @@ k dw 0h
 a dw 0h
 z dw 0h
 END
-

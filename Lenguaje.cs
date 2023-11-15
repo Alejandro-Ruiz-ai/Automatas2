@@ -679,7 +679,7 @@ namespace Sintaxis_2
                 cadena = cadena.Replace(@"\n", "\n");
                 cadena = cadena.Replace(@"\t", "\t");
                 cadenaasm = cadenaasm.Replace(@"\n", "'\nprintn '' \nprint '");
-                cadenaasm = cadenaasm.Replace(@"\t", "' \nprint ' ");
+                cadenaasm = cadenaasm.Replace(@"\t", "'\nprint '     ");
                 Console.Write(cadena);
                 if (primeraVez)
                 {
@@ -695,7 +695,7 @@ namespace Sintaxis_2
                 cadenaasm = cadena;
 
                 cadenaasm = cadenaasm.Replace(@"\n", "'\nprintn '' \nprint '");
-                cadenaasm = cadenaasm.Replace(@"\t", "' \nprint ' ");
+                cadenaasm = cadenaasm.Replace(@"\t", "'\nprint '     ");
                 if (primeraVez)
                 {
 
